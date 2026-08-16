@@ -152,7 +152,7 @@ const pendingTasks = computed(() =>
       <section class="rounded-xl bg-white p-6 shadow">
         <div class="mb-4">
           <h2 class="text-xl font-bold text-gray-800">
-            Search Tasks
+            Search Academic Tasks
           </h2>
 
           <p class="mt-1 text-sm text-gray-500">
