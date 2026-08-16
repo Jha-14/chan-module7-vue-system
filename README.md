@@ -1,9 +1,32 @@
-HEAD
-# Vue 3 + Vite
+# Student Task Management System
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A Vue.js student task management system developed for Module 7.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Features
 
-# chan-module7-vue-system
-3d7aefdc11e1badb62cd4ab99ff33a600690b5c8
+- Add new academic tasks
+- View all tasks
+- Edit existing tasks
+- Delete tasks with confirmation
+- Search tasks by title or subject
+- Form validation
+- Task status tracking
+- Task priority tracking
+- localStorage persistence
+- Responsive user interface
+
+## Technologies Used
+
+- Vue.js
+- Vite
+- Tailwind CSS
+- JavaScript
+- Git
+- GitHub
+
+## How to Run
+
+Install the project dependencies:
+
+```bash
+npm install
