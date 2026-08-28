@@ -5,6 +5,10 @@ const props = defineProps({
   editingTask: {
     type: Object,
     default: null
+  },
+  existingTasks: {
+    type: Array,
+    default: () => []
   }
 })
 
@@ -39,6 +43,18 @@ watch(
 function submitForm() {
   if (!taskTitle.value.trim() || !subject.value.trim() || !dueDate.value) {
     errorMessage.value = 'Please complete all required fields.'
+    return
+  }
+
+  const duplicateTask = props.existingTasks.some(
+    task =>
+      task.taskTitle.toLowerCase().trim() ===
+      taskTitle.value.toLowerCase().trim() &&
+      task.id !== props.editingTask?.id
+  )
+
+  if (duplicateTask) {
+    errorMessage.value = 'A task with this title already exists.'
     return
   }
 

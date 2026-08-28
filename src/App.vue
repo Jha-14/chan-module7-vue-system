@@ -144,10 +144,11 @@ const pendingTasks = computed(() =>
       </div>
 
       <RecordForm
-        :editing-task="editingTask"
-        @save="saveTask"
-        @cancel="cancelEdit"
-      />
+  :editing-task="editingTask"
+  :existing-tasks="tasks"
+  @save="saveTask"
+  @cancel="cancelEdit"
+/>
 
       <section class="rounded-xl bg-white p-6 shadow">
         <div class="mb-4">
