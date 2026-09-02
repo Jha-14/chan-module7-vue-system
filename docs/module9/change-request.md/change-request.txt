@@ -1,0 +1,46 @@
+# Module 9 Change Request
+
+## CR-M9-01: Add Active/Inactive Filter
+
+### Change Description
+
+Add an Active/Inactive filter to the current record list so users can quickly view records based on their current status.
+
+### Maintenance Type
+
+Perfective Maintenance
+
+### Target Version
+
+1.1.0
+
+### Reason for Change
+
+The existing system allows users to create, edit, search, and delete records, but users need an easier way to view records according to their status. The new filter improves usability without changing the existing CRUD workflow.
+
+### Acceptance Criteria
+
+1. The record list provides an Active/Inactive filter.
+2. Selecting Active displays only active records.
+3. Selecting Inactive displays only inactive records.
+4. The existing search function continues to work.
+5. Create, edit, and delete operations continue to work.
+6. Existing validation remains unchanged.
+7. Delete confirmation remains unchanged.
+8. Existing localStorage persistence continues to work.
+9. The responsive layout remains functional.
+10. Existing automated tests continue to pass.
+11. New or updated automated tests verify the filter behavior.
+12. The production build completes successfully.
+
+### Priority
+
+Medium
+
+### Risk
+
+Low to Medium
+
+### Expected Result
+
+Users can filter the existing records by Active or Inactive status while all existing system functionality remains reliable.
