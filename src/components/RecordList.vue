@@ -1,9 +1,25 @@
 <script setup>
-defineProps({
+import { computed, ref } from 'vue'
+
+const props = defineProps({
   tasks: {
     type: Array,
     default: () => []
   }
+})
+
+const statusFilter = ref('All')
+
+const filteredTasks = computed(() => {
+  if (statusFilter.value === 'Active') {
+    return props.tasks.filter(task => task.status === 'Pending')
+  }
+
+  if (statusFilter.value === 'Inactive') {
+    return props.tasks.filter(task => task.status === 'Completed')
+  }
+
+  return props.tasks
 })
 
 const emit = defineEmits(['edit', 'delete'])
@@ -20,16 +36,36 @@ const emit = defineEmits(['edit', 'delete'])
         <p class="mt-1 text-sm text-gray-500">
           All of your academic tasks are shown below.
         </p>
+
+        <!-- Status Filter -->
+        <div class="mt-3">
+          <label
+            for="status-filter"
+            class="mr-2 text-sm font-medium text-gray-700"
+          >
+            Filter:
+          </label>
+
+          <select
+            id="status-filter"
+            v-model="statusFilter"
+            class="rounded-lg border border-gray-300 px-3 py-2 text-sm"
+          >
+            <option value="All">All</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
       </div>
 
       <span class="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
-        {{ tasks.length }} task{{ tasks.length === 1 ? '' : 's' }}
+        {{ filteredTasks.length }} task{{ filteredTasks.length === 1 ? '' : 's' }}
       </span>
     </div>
 
     <!-- No tasks -->
     <div
-      v-if="tasks.length === 0"
+      v-if="filteredTasks.length === 0"
       class="rounded-lg bg-gray-100 p-8 text-center"
     >
       <p class="text-gray-500">
@@ -40,7 +76,7 @@ const emit = defineEmits(['edit', 'delete'])
     <!-- Task cards -->
     <div v-else class="space-y-4">
       <article
-        v-for="task in tasks"
+        v-for="task in filteredTasks"
         :key="task.id"
         class="rounded-lg border border-gray-200 p-5"
       >
