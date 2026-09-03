@@ -6,17 +6,20 @@ describe('filterTasks', () => {
     {
       id: 1,
       taskTitle: 'Study for Exam',
-      subject: 'Software Engineering'
+      subject: 'Software Engineering',
+      status: 'Pending'
     },
     {
       id: 2,
       taskTitle: 'Create Database',
-      subject: 'Database Systems'
+      subject: 'Database Systems',
+      status: 'Completed'
     },
     {
       id: 3,
       taskTitle: 'Design Homepage',
-      subject: 'Web Development'
+      subject: 'Web Development',
+      status: 'Pending'
     }
   ]
 
@@ -32,5 +35,19 @@ describe('filterTasks', () => {
 
     expect(result).toHaveLength(1)
     expect(result[0].subject).toBe('Software Engineering')
+  })
+
+  it('filters Active tasks as Pending', () => {
+    const result = filterTasks(tasks, '', 'Active')
+
+    expect(result).toHaveLength(2)
+    expect(result.every(task => task.status === 'Pending')).toBe(true)
+  })
+
+  it('filters Inactive tasks as Completed', () => {
+    const result = filterTasks(tasks, '', 'Inactive')
+
+    expect(result).toHaveLength(1)
+    expect(result[0].status).toBe('Completed')
   })
 })
